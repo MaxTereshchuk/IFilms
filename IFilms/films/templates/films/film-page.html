@@ -1,0 +1,245 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Film Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+        padding: 10px 5%;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+        width: 71px;
+        height: 60px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 100px;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        border: 1px solid #D9D9D9;
+        border-radius: 9999px;
+        gap: 8px;
+        margin: 0 10px;
+    }
+
+    .search-bar input {
+        border: none;
+        outline: none;
+        font-size: 14px;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .auth-buttons .Link {
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .auth-buttons .login {
+      background: #03151E;
+    }
+
+    .auth-buttons .signup {
+      background: #4BC1D2;
+    }
+
+    .main-content {
+      padding: 150px 5%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 60px;
+    }
+
+    .image-container img {
+      width: 100%;
+      max-width: 364px;
+      border-radius: 10px;
+    }
+
+    .details {
+      max-width: 600px;
+      flex: 1;
+    }
+
+    .details h1,
+    .details h2,
+    .details p {
+      margin-bottom: 20px;
+    }
+
+    .details h1 {
+      font-size: 32px;
+      font-weight: 600;
+    }
+
+    .details h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #4BC1D2;
+    }
+
+    .details p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .details p.description {
+      font-size: 16px;
+      color: black;
+    }
+
+    .heart-container {
+      align-self: flex-start;
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .heart-container img {
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+    }
+
+    .heart-container span {
+      font-size: 18px;
+      font-weight: 600;
+      color: black;
+    }
+
+    @media (max-width: 768px) {
+        .navbar {
+            padding: 10px 5%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 100px;
+        }
+
+        .search-bar input {
+            font-size: 16px;
+        }
+
+        .main-content {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .details {
+            text-align: center;
+        }
+
+        .heart-container {
+            margin: 20px 0 0;
+        }
+
+        .details h1 {
+            font-size: 28px;
+        }
+
+        .details h2 {
+            font-size: 20px;
+        }
+
+        .details p {
+            font-size: 16px;
+        }
+    }
+
+  </style>
+</head>
+<body>
+    <header class="navbar">
+        <img class="logo" src="{% static 'image-2.svg' %}" alt="Logo">
+        <div class="nav-links">
+            <a href="{% url 'index' %}" class="nav-link">Home</a>
+            <a href="{% url 'search' %}" class="nav-link">Movies</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+        </div>
+        <div class="auth-buttons">
+          <div class="Link login">Login</div>
+          <div class="Link signup">Sign Up</div>
+        </div>
+    </header>
+
+  <div class="main-content">
+    <div class="image-container">
+      <img src="{% static 'image-3.png' %}" alt="Joker Poster">
+    </div>
+    <div class="details">
+      <h1>Joker: Folie à Deux</h1>
+      <h2>Warner Bros. Pictures, DC Entertainment, Village Roadshow Pictures</h2>
+      <p class="description">
+        Arthur Fleck (Joaquin Phoenix) spent monotonous, similar days in a mental institution until he met Harleen Quinzel (Lady Gaga).
+        The lives of both of them were filled with new hope, and the world around them was filled with healing music.
+      </p>
+      <p>
+        Year: 2024<br>
+        Director: Todd Phillips<br>
+        Production: USA<br>
+        Screenplay: Todd Phillips, Scott Silver<br>
+        Genre: Thriller
+      </p>
+    </div>
+    <div class="heart-container">
+      <img src="{% static 'heart.svg' %}" alt="Heart">
+      <span>Favourite</span>
+    </div>
+  </div>
+</body>
+</html>

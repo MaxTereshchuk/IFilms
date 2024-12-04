@@ -1,0 +1,231 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: white;
+    }
+
+    .Frame2 {
+      width: 100%;
+      background: white;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+        padding: 10px 5%;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+        width: 71px;
+        height: 60px;
+    }
+
+    .nav-links {
+        display: none;
+        gap: 100px;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        border: 1px solid #D9D9D9;
+        border-radius: 9999px;
+        gap: 8px;
+        margin: 0 10px;
+    }
+
+    .search-bar input {
+        border: none;
+        outline: none;
+        font-size: 14px;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .auth-buttons .Link {
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .auth-buttons .login {
+      background: #03151E;
+    }
+
+    .auth-buttons .signup {
+      background: #4BC1D2;
+    }
+
+    .DivHero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 10%;
+      text-align: center;
+    }
+
+    .DivHero .LoremIpsum {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #03151E;
+      margin-bottom: 20px;
+    }
+
+    .DivHero .PLead {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #03151E;
+      margin-bottom: 30px;
+    }
+
+    .DivHero .Link {
+      padding: 10px 30px;
+      background: #4BC1D2;
+      color: white;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .DivCreateShare {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 10%;
+      background: #CFF2F5;
+    }
+
+    .DivCreateShare img {
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0px 25px 100px rgba(27, 84, 112, 0.15) inset;
+      margin-bottom: 20px;
+    }
+
+    .DivCreateShare .Heading2 {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #03151E;
+      margin-bottom: 20px;
+    }
+
+    .DivCreateShare .PTextCenter {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #03151E;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+     @media (min-width: 768px) {
+            .navbar {
+                padding: 10px 5%;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 100px;
+            }
+
+            .search-bar input {
+                font-size: 16px;
+            }
+            .DivHero .LoremIpsum {
+                font-size: 1.5rem;
+              }
+
+              .DivHero .PLead {
+                font-size: 0.9rem;
+              }
+
+              .DivHero .Link {
+                font-size: 0.9rem;
+              }
+
+              .DivCreateShare .Heading2 {
+                font-size: 1.2rem;
+              }
+
+              .DivCreateShare .PTextCenter {
+                font-size: 0.9rem;
+              }
+     }
+
+  </style>
+</head>
+<body>
+  <div class="Frame2">
+    <header class="navbar">
+        <img class="logo" src="{% static 'image-2.svg' %}" alt="Logo">
+        <div class="nav-links">
+            <a href="{% url 'index' %}" class="nav-link">Home</a>
+            <a href="{% url 'search' %}" class="nav-link">Movies</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+        </div>
+        <div class="auth-buttons">
+          <div class="Link login">Login</div>
+          <div class="Link signup">Sign Up</div>
+        </div>
+    </header>
+    <div class="DivHero">
+      <div class="LoremIpsum">Lorem Ipsum</div>
+      <div class="PLead">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+      <a href="{% url 'search' %}" class="Link">Start</a>
+    </div>
+    <div class="DivCreateShare">
+      <img src="{% static 'image 1.png' %}" alt="Example">
+      <div class="Heading2">Lorem Ipsum</div>
+      <div class="PTextCenter">
+        It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

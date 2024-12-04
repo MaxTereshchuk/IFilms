@@ -1,0 +1,235 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Favourite page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Roboto, Arial, sans-serif;
+        }
+
+        .frame {
+            max-width: 100%;
+            background: white;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            padding: 10px 5%;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            width: 71px;
+            height: 60px;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 100px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border: 1px solid #D9D9D9;
+            border-radius: 9999px;
+            gap: 8px;
+            margin: 0 10px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .user-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .library-header {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px 15px;
+            background: #EEEEEF;
+            border-radius: 5px;
+        }
+
+        .library-header .title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #03151E;
+        }
+
+        .search-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(238, 238, 239, 0.9);
+            box-shadow: 0 20px 20px -10px rgba(0, 0, 0, 0.25);
+            padding: 8px 10px;
+            border-radius: 5px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+        }
+
+        .alphabet {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .alphabet span {
+            font-size: 12px;
+            color: #03151E;
+        }
+
+        .library-items {
+            padding-top: 2%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .library-item {
+            text-align: center;
+        }
+
+        .library-item img {
+            width: 100px;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        .library-item .title {
+            font-size: 12px;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        .library-item .author {
+            font-size: 10px;
+            color: #555;
+        }
+
+        @media (min-width: 768px) {
+            .navbar {
+                padding: 10px 5%;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 100px;
+            }
+
+            .library-header .title {
+                font-size: 24px;
+            }
+
+            .search-bar input {
+                font-size: 16px;
+            }
+
+            .library-items {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .library-item img {
+                width: 130px;
+            }
+
+            .library-item .title {
+                font-size: 14px;
+            }
+
+            .library-item .author {
+                font-size: 11px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .navbar {
+                height: 60px;
+            }
+
+            .library-header .title {
+                font-size: 26px;
+            }
+
+            .library-items {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .library-item img {
+                width: 150px;
+            }
+
+            .library-item .title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="frame">
+        <header class="navbar">
+            <img class="logo" src="{% static 'image-2.svg' %}" alt="Logo">
+            <div class="nav-links">
+                <a href="{% url 'index' %}" class="nav-link">Home</a>
+                <a href="{% url 'search' %}" class="nav-link">Movies</a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search">
+            </div>
+            <img class="user-icon" src="{% static 'User.svg' %}" alt="User Icon">
+        </header>
+        <main class="content">
+            <div class="library-header">
+                <div class="title">Favourite</div>
+            </div>
+            <div class="search-section">
+                <input class="search-input" type="text" placeholder="Search">
+            </div>
+            <div class="library-items">
+                <div class="library-item">
+                    <img src="{% static 'djoker.png' %}" alt="Joker Cover">
+                    <div class="title">Joker: Folie à Deux</div>
+                    <div class="author">Todd Phillips</div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
