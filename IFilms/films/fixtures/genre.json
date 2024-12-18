@@ -1,0 +1,1 @@
+[{"model": "films.filmgenre", "pk": 1, "fields": {"name": "Thriller", "description": ""}}, {"model": "films.filmgenre", "pk": 2, "fields": {"name": "Action film", "description": ""}}]

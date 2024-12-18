@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  {% if messages or form.non_field_errors %}
+      <div class="alert">
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% else %}
+            {{ form.non_field_errors }}
+        {% endif %}
+      </div>
+  {% endif %}
+  <div class="container">
+    <div class="login form">
+      <header>Login</header>
+      <form action="{% url 'users:login' %}" method="post">
+        {% csrf_token %}
+        {{ form.username }}
+        {{ form.password }}
+        <a href="#">Forgot password?</a>
+        <input type="submit" class="button" value="Login">
+      </form>
+      <div class="signup">
+        <span class="signup">Don't have an account?
+         <a href="{% url 'users:registration' %}">Sign Up</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

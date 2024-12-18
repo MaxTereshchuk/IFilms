@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Signup</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  <div class="container {% if form.errors %}with-alert{% endif %}">
+    <div class="registration form">
+      <header>Sign Up</header>
+      <form action="{% url 'users:registration' %}" method="post">
+        {% csrf_token %}
+        {{ form.username }}
+        {{ form.email }}
+        {{ form.password1 }}
+        {{ form.password2 }}
+        <input type="submit" class="button" value="Signup">
+      </form>
+      <div class="signup">
+        <span class="signup">Already have an account?
+         <a href="{% url 'users:login' %}">Login</a>
+        </span>
+      </div>
+    </div>
+  </div>
+  {% if messages or form.errors %}
+    <div class="alert alert-top-1">
+      {{ form.errors }}
+    </div>
+  {% endif %}
+</body>

@@ -1,0 +1,140 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ title }}</title>
+  <style>
+      {% block style %} {% endblock %}
+
+    .nav-link {
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .admin-panel{
+        text-decoration: none;
+        color: red;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+        padding: 10px 5%;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+        width: 71px;
+        height: 60px;
+    }
+
+    .user-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    .nav-links {
+        display: flex;
+        gap: 100%;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        border: 1px solid #D9D9D9;
+        border-radius: 9999px;
+        gap: 8px;
+        margin-left: 20%;
+    }
+
+    .search-bar input {
+        border: none;
+        outline: none;
+        font-size: 14px;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .auth-buttons .Link {
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .auth-buttons .login {
+      background: #03151E;
+      text-decoration: none;
+    }
+
+    .auth-buttons .signup {
+      background: #4BC1D2;
+      text-decoration: none;
+    }
+
+
+  </style>
+</head>
+<body>
+    <header class="navbar">
+        {% if user.is_authenticated %}
+            <img class="logo" src="{% static 'image-2.svg' %}" alt="Logo">
+            <div class="nav-links">
+                <a href="{% url 'index' %}" class="nav-link">Home</a>
+                <a href="{% url 'search' %}" class="nav-link">Movies</a>
+                <a href="{% url 'favourite' %}" class="nav-link">Favourite</a>
+            </div>
+            <div class="search-bar">
+                <form action="{% url 'search' %}" method="get">
+                    <input type="text" name="query" placeholder="Search" value="{{ query }}">
+                </form>
+                <img src="{% static 'search.svg' %}" alt="Search Icon">
+            </div>
+            {% if user.is_superuser or user.is_staff %}
+                <a href="{% url 'admin:index' %}" class="admin-panel">Admin Panel</a>
+            {% endif %}
+            <a href="{% url 'users:profile' %}">
+                <img class="user-icon" src="{% static 'User.svg' %}" alt="User Icon">
+            </a>
+        {% else %}
+            <img class="logo" src="{% static 'image-2.svg' %}" alt="Logo">
+            <div class="nav-links">
+                <a href="{% url 'index' %}" class="nav-link">Home</a>
+                <a href="{% url 'search' %}" class="nav-link">Movies</a>
+            </div>
+            <div class="search-bar">
+                <form action="{% url 'search' %}" method="get">
+                    <input type="text" name="query" placeholder="Search" value="{{ query }}">
+                </form>
+                <img src="{% static 'search.svg' %}" alt="Search Icon">
+            </div>
+            <div class="auth-buttons">
+              <a class="Link login" href="{% url 'users:login' %}">Login</a>
+              <a class="Link signup" href="{% url 'users:registration' %}">Sign Up</a>
+            </div>
+        {% endif %}
+    </header>
+
+    {%block content %} {% endblock %}
+
+</body>
+</html>

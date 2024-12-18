@@ -15,18 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
 
-from films.views import index, film_page, favourite, search_page
+from films.views import index, film_page, favourite, search_page, toggle_favourite
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('film_page/', film_page, name='film_page'),
+    path('film/<int:film_id>/', film_page, name='film_page'),
+    path('film/<int:film_id>/toggle_favourite/', toggle_favourite, name='toggle_favourite'),
     path('favourite/', favourite, name='favourite'),
     path('search/', search_page, name='search'),
+    path('users/', include('users.urls', namespace='users')),
 ]
 
 if settings.DEBUG:
