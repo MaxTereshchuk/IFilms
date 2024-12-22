@@ -37,7 +37,7 @@ class FilmCountry(models.Model):
         return self.name
 
 class Film(models.Model):
-    name = models.CharField(max_length=128, unique=True)
+    name = models.CharField(max_length=128, unique=False)
     genre = models.ForeignKey(to=FilmGenre, on_delete=models.CASCADE)
     studio = models.ForeignKey(to=FilmStudio, on_delete=models.CASCADE)
     description = models.TextField(null=True, blank=True)

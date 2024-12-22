@@ -51,7 +51,7 @@
     .details h3 {
       font-size: 24px;
       font-weight: 600;
-      margin-top: 80px;
+      margin-top: 20px;
     }
 
     .details p {
@@ -61,6 +61,7 @@
 
     .details p.description {
       font-size: 24px;
+      margin-top: 20px;
     }
 
     .heart-container {
@@ -84,6 +85,11 @@
       color: black;
     }
 
+    .tag{
+      text-decoration: none;
+      color: #4BC1D2;
+    }
+
 {% endblock %}
 
 {% block content %}
@@ -93,18 +99,22 @@
         </div>
         <div class="details">
           <h1>{{ film.name }}</h1>
-          <h2>{{ film.studio }}</h2>
+          <h2><a class="tag" href="{% url 'search' %}?studio={{ film.studio.id }}">{{ film.studio.name }}</a></h2>
+          <h3>
+            Genre:
+            <a class="tag" href="{% url 'search' %}?genre={{ film.genre.id }}">{{ film.genre.name }}</a> <br>
+            Director:
+            <a class="tag" href="{% url 'search' %}?director={{ film.director.id }}">{{ film.director.name }}</a> <br>
+            Year:
+            <a class="tag" href="{% url 'search' %}?year={{ film.year.id }}">{{ film.year.name }}</a> <br>
+            Production:
+            <a class="tag" href="{% url 'search' %}?country={{ film.country.id }}">{{ film.country.name }}</a> <br>
+            Screenplay: {{ film.screenplay }};<br>
+            Actors: {{ film.actors }};
+          </h3>
           <p class="description">
             {{ film.description }}
           </p>
-          <h3>
-            Genre: {{ film.genre }} <br>
-            Director: {{ film.director }}<br>
-            Screenplay: {{ film.screenplay }}<br>
-            Year: {{ film.year }}<br>
-            Production: {{ film.country }}<br>
-            Actors : {{ film.actors }}
-          </h3>
         </div>
         {% if user.is_authenticated %}
             <div class="heart-container" id="heart-container-{{ film.id }}">
